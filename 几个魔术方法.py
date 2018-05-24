@@ -18,9 +18,10 @@ class P:
         self.name = name
         self.age = age
         # return "s"  # 这样是错误的，__init__方法不能返回除None外的任何值
-        #print(self.name + self.age) 这样是正确的
+        # print(self.name + self.age) 这样是正确的
 
-    def __str__(self):#覆写__str__魔术方法，即改变了str方法，在print方法使用时先调用str方法转换成字符串，变相的改变了输出
+    def __str__(self):  # 覆写__str__魔术方法，即改变了str方法，在print方法使用时先调用str
+        # 方法转换成字符串，变相的改变了输出
         return '这是覆写str的P  ' + self.name
 
     # def __del__(self):
@@ -38,12 +39,12 @@ class Q(P):
         super(Q,self).__init__(name,age)
         self.wigth = wigth
 
-    def __str__(self):#这又覆盖了父类的str，否则会输出父类的__str__
-        return '这是覆写str的Q  ' + self.name + self.age +self.wigth
+    def __str__(self):  # 这又覆盖了父类的str，否则会输出父类的__str__
+        return '这是覆写str的Q  ' + self.name + self.age + self.wigth
 
 if __name__ == '__main__':
     q = Q('wang','1','12')
     p = P('ming','12')
-    print(q)#由于覆写了__str__魔术方法，此时q = q.name + q.age +q.wigth
+    print(q)  # 由于覆写了__str__魔术方法，此时q = q.name + q.age +q.wigth
     print("这是正常打印的Q  " + q.name + q.age + q.wigth)
     print(p)
